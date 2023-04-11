@@ -3,6 +3,7 @@ import userRoutes from "./modules/user/route";
 import { userSchemas } from "./modules/user/schema";
 import fjwt from 'fastify-jwt-deprecated';
 import pokemonRoutes from "./modules/pokemon/route";
+import cors from '@fastify/cors'
 
 export const server = Fastify()
 
@@ -11,6 +12,10 @@ declare module "fastify" {
         auth: any
     }
 }
+
+server.register(cors, { 
+   origin: "*" // super bad in production
+  })
 
 server.register(fjwt, {
     secret: `${process.env.SECRET}`
@@ -35,8 +40,8 @@ const main = async () => {
     for(const schema of userSchemas) {
         server.addSchema(schema)
     }
-    server.register(userRoutes, { prefix: 'api/users' })
     server.register(pokemonRoutes, { prefix: 'api/pokemons' })
+    server.register(userRoutes, { prefix: 'api/users' })
     try {
         await server.listen({port: 3001, host: '0.0.0.0'})
         server.log.info('Server ready on port localhost:3001')

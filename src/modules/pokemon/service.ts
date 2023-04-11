@@ -16,14 +16,18 @@ export const fetchPokemons = async({ limit, offset }: {
         queue.push(axios(`${baseUrl}/${i}`).then((res) => res.data))
     }
     const pokemons = Promise.all(queue).then((results) => {
-        return results.map(( { id, name, sprites, height, weight, abilities }: PokemonResponse) => ({
-            id,
-            name,
-            height,
-            weight,
-            abilities: abilities.map(({ability}) => ability.name),
-            image: sprites.front_default,
-        }))
+        return results.map(( { id, name, height, weight, abilities }: PokemonResponse) => {
+            const formatImageIndex = ("00" + id).slice(-3)
+            const imageLink = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${formatImageIndex}.png`
+            return {
+                id,
+                name,
+                height,
+                weight,
+                abilities: abilities.map(({ability}) => ability.name),
+                image: imageLink,
+            }
+        })
     })
     return pokemons
 }
