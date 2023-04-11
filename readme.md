@@ -17,7 +17,7 @@ To get started with this project, follow these steps:
 4. Run `yarn install` to install the project's dependencies.
 5. Run `yarn dev` to start dev server.
 
-The server should now be up and running on `http://localhost:3000`. 
+The server should now be up and running on `http://localhost:3001`. 
 
 ## API Endpoints
 
