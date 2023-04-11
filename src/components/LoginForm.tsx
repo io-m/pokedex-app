@@ -6,7 +6,6 @@ import Overlay from "./Overlay"
 const LoginForm = () => {
     const { login, authState, showLoginForm } = useContext(AuthContext)
     
-    console.log('AUTH STATE::::: ', authState)
     if(showLoginForm && authState !== AUTH_STATE.PENDING){
       return (
         <div className='flex justify-center'>

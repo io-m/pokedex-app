@@ -35,7 +35,7 @@ const LoadingSpinner = () => {
         <div className="animate-spin bg-gradient-to-r from-cyan-500 to-blue-500 mt-[250px] rounded-full h-16 w-16 border-t-2 border-b-2 border-gray-900"></div>
       </div>
     )
-    }
+  }
   return <></>
 };
 

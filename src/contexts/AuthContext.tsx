@@ -20,7 +20,7 @@ const initAuthState: AUTH_STATE = AUTH_STATE.LOGGED_OUT
 
 const initialAuthStat: AuthContextProps = {
     authState: initAuthState,
-    showLoginForm: true
+    showLoginForm: false
 }
 
 const enum AUTH_ACTION {
